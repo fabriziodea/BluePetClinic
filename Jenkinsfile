@@ -14,6 +14,7 @@ pipeline {
     stage('Terraform Init') {
       steps {
         sh "terraform init -input=false"
+        sh "terraform state replace-provider -auto-approve registry.terraform.io/-/vault registry.terraform.io/hashicorp/vault"
       }
     }
     stage('Terraform Plan') {
