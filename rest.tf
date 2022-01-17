@@ -1,7 +1,8 @@
 provider "aws" {
     version                 = "~> 2.0"
     region                  = "eu-west-2"
-    shared_credentials_file = "~/.aws/credentials"
+    aws_access_key_id = "${AWS_ACCESS_KEY_ID}"
+    aws_secret_acess_key = "${AWS_SECRET_ACCESS_KEY}"
 }
 resource "aws_instance" "EC2" {
     ami           = "ami-0f9124f7452cdb2a6"
