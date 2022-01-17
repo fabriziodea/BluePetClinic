@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Terraform Plan') {
       steps {
-        sh "terraform plan -out=tfplan -input=false -var-file='jenkins.tfvars'"
+        sh "terraform plan -out=tfplan -input=false "
       }
     }
     stage('Terraform Apply') {
