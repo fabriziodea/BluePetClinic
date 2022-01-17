@@ -18,8 +18,3 @@
    - docker
    - swarm-worker
 
-- name: manager deploys
-  hosts: swarmanager
-  become: true
-  roles:
-  - deploy
