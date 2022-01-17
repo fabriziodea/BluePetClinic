@@ -1,9 +1,9 @@
-output "Public_IP" {
+output "nginx_Public_IP" {
     value = aws_instance.nginx-VM.public_ip
 }
-output "Public_IP" {
+output "worker_Public_IP" {
     value = aws_instance.worker-VM.public_ip
 }
-output "Public_IP" {
+output "manager_Public_IP" {
     value = aws_instance.manager-VM.public_ip
 }
