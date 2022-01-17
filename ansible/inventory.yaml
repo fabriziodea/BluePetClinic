@@ -2,13 +2,13 @@ all:
   children:
     managers:
       hosts:
-#        swarmanager:
+        ec2-54-246-253-6.eu-west-1.compute.amazonaws.com:
     workers:
       hosts:
-#        swarmworker:
+        ec2-54-155-194-239.eu-west-1.compute.amazonaws.com:
     nginx:
       hosts:
-#        nginx:
+        ec2-34-245-170-57.eu-west-1.compute.amazonaws.com:
 
   vars:
     ansible_user: jenkins
