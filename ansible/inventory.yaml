@@ -1,0 +1,17 @@
+all:
+  children:
+    managers:
+      hosts:
+        ec2-54-246-253-6.eu-west-1.compute.amazonaws.com:
+    workers:
+      hosts:
+        ec2-54-155-194-239.eu-west-1.compute.amazonaws.com:
+    nginx:
+      hosts:
+        ec2-34-245-170-57.eu-west-1.compute.amazonaws.com:
+
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: '~/.ssh/id_rsa'
+    ansible_python_interpreter: "/usr/bin/python3"
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
