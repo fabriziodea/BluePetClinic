@@ -1,0 +1,4 @@
+- hosts: localhost #change to the host you want it to affect#
+  tasks:
+  - name: "start the backend"
+    command: docker run -d -p 9966:9966 springcommunity/spring-petclinic-rest
