@@ -6,14 +6,19 @@
 
 - name:  init swarm manager
   hosts: managers
+  gather_facts: yes
   become: true
   roles: 
    - docker
+   - nodejs
    - swarm-init
 
 - name: workers joins
   hosts: workers
   become: true
+  gather_facts: yes
   roles: 
    - docker
+   - nodejs
    - swarm-worker
+
