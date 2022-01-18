@@ -25,8 +25,8 @@
 
 The purpose of this ReadMe document is to outline the project specification of the DevOps final project that we will be working. We will be working with these externally developed applications:
 
--https://github.com/spring-petclinic/spring-petclinic-angular
--https://github.com/spring-petclinic/spring-petclinic-rest
+- https://github.com/spring-petclinic/spring-petclinic-angular
+- https://github.com/spring-petclinic/spring-petclinic-rest
 
 They are well documented applications for the 'Spring Pet Clinic' domain, one of which serves as front end client using AngularJS and the other as an API using Java.
 
