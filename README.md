@@ -84,7 +84,7 @@ We need 3 new Virtual Machines in AWS and these are:
 
 ---
 ## AWS
-When starting my project, we had to create & test whether the applications works by installing a Virtual Machine on AWS. AWS offers services for compute, storage, networking, big data, machine learning and the internet of things(IoT) as well as cloud management, security and developer tools.
+When starting our project, we had to create & test whether the applications works by installing a Virtual Machine on AWS. AWS offers services for compute, storage, networking, big data, machine learning and the internet of things(IoT) as well as cloud management, security and developer tools.
 
 In order for us to connect my application to the VM, we had to place our local machines public key in. Then we SSH through VSC to my VM and clone this to GIT repository. 
 
