@@ -25,6 +25,7 @@ pipeline {
     }
     stage('Export IPs') {
       steps {
+        def aaaaaa = "Hello world"
         withEnv([ 
         'export nginx_IP=$(terraform output -raw nginx_Public_IP)' , 
         'export worker_IP=$(terraform output -raw worker_Public_IP)' , 
