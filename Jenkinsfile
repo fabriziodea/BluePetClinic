@@ -21,17 +21,16 @@ pipeline {
     }
     stage('Terraform Apply') {
       steps {
-        sh "terraform apply -input=false tfplan" }
-    }
-    stage('Export IPs') {
-      steps {
-        def aaaaaa = "Hello world"
-        withEnv([ 
-        'export nginx_IP=$(terraform output -raw nginx_Public_IP)' , 
-        'export worker_IP=$(terraform output -raw worker_Public_IP)' , 
-          'export manager_IP=$(terraform output -raw manager_Public_IP})']) {
-          def IPs = sh(script: 'echo $nginx_IP', 'echo $worker_IP', 'echo $manager_IP') }
-        { echo IPs    } }
+        sh "terraform apply -input=false tfplan" 
+       sh "export nginx_IP=$(terraform output -raw nginx_Public_IP" 
+        sh "echo $nginx_IP"
+        sh "export worker_IP=$(terraform output -raw worker_Public_IP" 
+        sh "echo $worker_IP"
+        sh "export manager_IP=$(terraform output -raw manager_Public_IP" 
+        sh "echo $manager_IP"
+      
+      }
+ 
       }
      
    }
