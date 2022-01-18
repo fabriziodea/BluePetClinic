@@ -21,11 +21,12 @@ pipeline {
     }
     stage('Terraform Apply') {
       steps {
-        sh "terraform apply -input=false tfplan" }
-        export nginx_IP=$(terraform output -raw nginx_Public_IP) , 
-        export worker_IP=$(terraform output -raw worker_Public_IP) , 
-        export manager_IP=$(terraform output -raw manager_Public_IP)
-      }
+        sh "terraform apply -input=false tfplan" 
+     }
     }
   }
 }
+        export nginx_IP=$(terraform output -raw nginx_Public_IP) , 
+        export worker_IP=$(terraform output -raw worker_Public_IP) , 
+        export manager_IP=$(terraform output -raw manager_Public_IP)
+      
