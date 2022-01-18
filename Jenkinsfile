@@ -32,7 +32,7 @@ pipeline {
           def IPs = sh(script: 'echo $nginx_IP', 'echo $worker_IP', 'echo $manager_IP') }
         { echo IPs    } }
       }
-     }
+     
    }
 }
 
