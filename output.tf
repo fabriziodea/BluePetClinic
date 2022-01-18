@@ -1,25 +1,12 @@
-locals {
-    nginx = templatefile("template.tpl", {
-        nginx_Public_IP = aws_instance.nginx-VM.public_ip, 
-    })
-}
 
 output "nginx_Public_IP" {
-    value = local.nginx
+    value = aws_instance.nginx-VM.public_ip
 }
-locals {
-    worker = templatefile("template.tpl", {
-        worker_Public_IP = aws_instance.worker-VM.public_ip, 
-    })
-}
+
 output "worker_Public_IP" {
-    value = local.worker
+    value = aws_instance.worker-VM.public_ip
 }
-locals {
-    manager = templatefile("template.tpl", {
-        manager_Public_IP = aws_instance.manager-VM.public_ip, 
-    })
-}
+
 output "manager_Public_IP" {
-    value = local.manager
+    value = aws_instance.manager-VM.public_ip
 }
