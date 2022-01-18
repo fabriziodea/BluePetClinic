@@ -29,8 +29,8 @@ pipeline {
         'export nginx_IP=$(terraform output -raw nginx_Public_IP)' , 
         'export worker_IP=$(terraform output -raw worker_Public_IP)' , 
         'export manager_IP=$(terraform output -raw manager_Public_IP})'])
-        def IPs = sh(script: 'echo $nginx_IP', 'echo $worker_IP', 'echo $manager_IP')
-                 echo IPs    
+        , def IPs = sh(script: 'echo $nginx_IP', 'echo $worker_IP', 'echo $manager_IP')
+                 , echo IPs    
       }
      }
    }
