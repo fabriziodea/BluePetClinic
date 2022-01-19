@@ -41,7 +41,7 @@ pipeline {
             sh 'echo ${manager_IP}' 
       
       }
- 
+    }
       }
 }
    
