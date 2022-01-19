@@ -21,7 +21,9 @@ pipeline {
     }
     stage('Terraform Apply') {
       steps {
-        sh "terraform apply -input=false tfplan" 
+        sh "terraform apply -input=false tfplan" }}
+      stage('Save Ip addresses')
+      steps {
         /*nginx_IP = sh(returnStdout: true, script: "terraform output nginx_Public_IP").trim()} */
        /* nginx_IP = "${terraform output -raw nginx_Public_IP}" */
         sh 'export nginx_IP=${terraform output -raw nginx_Public_IP}'} 
