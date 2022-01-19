@@ -25,9 +25,9 @@ pipeline {
     stage('Terraform Apply') {
       steps {
         sh "terraform apply -input=false tfplan" }
-      {nginx_IP = sh(returnStdout: true, script: "terraform output nginx_public_IP").trim()}
-      {manager_IP = sh(returnStdout: true, script: "terraform output manager_public_IP").trim()}
-       {worker_IP = sh(returnStdout: true, script: "terraform output worker_public_IP").trim()
+      {'nginx_IP' = sh(returnStdout: true, script: "terraform output nginx_public_IP").trim()}
+      {'manager_IP' = sh(returnStdout: true, script: "terraform output manager_public_IP").trim()}
+       {'worker_IP' = sh(returnStdout: true, script: "terraform output worker_public_IP").trim()
       }
     }
     stage('Print IP adresses') {
