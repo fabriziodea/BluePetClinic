@@ -22,7 +22,7 @@ pipeline {
     stage('Terraform Apply') {
       steps {
         sh "terraform apply -input=false tfplan" 
-        nginx_ip = sh(returnStdout: true, script: "terraform output nginx-Public_IP").trim(),
+        nginx_ip = sh(returnStdout: true, script: "terraform output nginx-Public_IP").trim()}{
         sh "export nginx_IP=${terraform output -raw nginx_Public_IP}"
         sh "echo ${nginx_IP}"
         sh "export worker_IP=${terraform output -raw worker_Public_IP}"
