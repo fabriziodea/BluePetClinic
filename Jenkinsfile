@@ -32,8 +32,8 @@ pipeline {
           sh "echo ${worker_IP}"
         /*manager_IP = "${terraform output -raw manager_Public_IP}" */
         /* sh "export manager_IP=${terraform output -raw manager_Public_IP}" */
-         manager_IP = sh(returnStdout: true, script: "terraform output manager_Public_IP").trim()} {
-        sh "echo ${manager_IP}"}
+        /* manager_IP = sh(returnStdout: true, script: "terraform output manager_Public_IP").trim()/*} {
+        /*sh "echo ${manager_IP}" */}
       
       }
  
