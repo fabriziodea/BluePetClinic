@@ -1,2 +1,2 @@
 - name: Run our script
-  ansible.builtin.script: /home/jenkins/bluescript.sh
+  ansible.builtin.script: /home/ubuntu/projects/BluePetClinic/bluescript.sh

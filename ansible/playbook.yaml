@@ -5,7 +5,7 @@
     - nginx
 
 - name: Install dependencies
-  hosts: managers,workers
+  hosts: swarmanager, swarmworker
   become: true
   roles:
     - git
@@ -14,19 +14,19 @@
     - script
 
 - name:  init swarm manager
-  hosts: managers
+  hosts: swarmanager
   become: true
   roles: 
    - swarm-init
 
 - name: workers joins
-  hosts: workers
+  hosts: swarmworker
   become: true
   roles: 
    - swarm-worker
 
 - name: manager deploys
-  hosts: managers
+  hosts: swarmanager
   become: true
   roles:
   - deploy
