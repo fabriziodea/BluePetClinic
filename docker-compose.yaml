@@ -1,7 +1,7 @@
 version: '3.8'
 services:
     Frontend:
-        image: fabriziodea/bluefrontend:1
+        image: gbarnacle79/blue-angular:7
         deploy:
             replicas: 2
         ports:
