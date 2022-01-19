@@ -37,7 +37,7 @@ pipeline {
          sh 'echo ${nginx_IP}'
          sh 'echo ${worker_IP}' 
          sh 'echo $(manager_IP}' 
-        
+      }} 
       }
 }
    
