@@ -6,9 +6,6 @@ pipeline {
     TF_IN_AUTOMATION = 'true'
     AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-    def nginx_IP
-    def worker_IP
-    def manager_IP
   }
   stages {
     stage('Terraform Init') {
