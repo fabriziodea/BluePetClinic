@@ -6,6 +6,9 @@ pipeline {
     TF_IN_AUTOMATION = 'true'
     AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    def nginx_IP
+    def worker_IP
+    def manager_IP
   }
   stages {
     stage('Terraform Init') {
@@ -22,14 +25,9 @@ pipeline {
     stage('Terraform Apply') {
       steps {
         sh "terraform apply -input=false tfplan" 
-      }
-    }
-    stage('Save Ip addresses') {
-      steps {
-        sh 'nginx_IP={terraform output -raw nginx_Public_IP}' 
-        sh 'echo is this working'  
-        sh 'worker_IP={terraform output -raw worker_Public_IP}'
-        sh 'manager_IP={terraform output -raw manager_Public_IP}' 
+        nginx_IP = sh(returnStdout: true, script: "terraform output nginx_public_IP").trim()
+        manager_IP = sh(returnStdout: true, script: "terraform output manager_public_IP").trim()
+        worker_IP = sh(returnStdout: true, script: "terraform output worker_public_IP").trim()
       }
     }
     stage('Print IP adresses') {
