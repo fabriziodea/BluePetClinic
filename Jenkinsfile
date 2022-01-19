@@ -26,22 +26,18 @@ pipeline {
     }
     stage('Save Ip addresses') {
       steps {
-        /*nginx_IP = sh(returnStdout: true, script: "terraform output nginx_Public_IP").trim()} */
-       /* nginx_IP = "${terraform output -raw nginx_Public_IP}" */
         sh 'export nginx_IP=${terraform output -raw nginx_Public_IP}' 
         sh 'echo is this working'  
-      /*{sh 'echo ${nginx_IP}'}*/
-        /* worker_IP = "${terraform output -raw worker_Public_IP}" */
-       sh 'export worker_IP=${terraform output -raw worker_Public_IP}' 
-       /* {worker_IP = sh(returnStdout: true, script: "terraform output worker_Public_IP").trim()} */
-      sh 'echo ${worker_IP}' 
-        /*manager_IP = "${terraform output -raw manager_Public_IP}" */
-         sh 'export manager_IP=${terraform output -raw manager_Public_IP}' 
-          /*manager_IP = sh(returnStdout: true, script: "terraform output manager_Public_IP").trim()}*/ 
-            sh 'echo ${manager_IP}' 
-      
+        sh 'export worker_IP=${terraform output -raw worker_Public_IP}'
+        sh 'export manager_IP=${terraform output -raw manager_Public_IP}' 
       }
     }
+    stage('Print IP adresses') {
+      steps {
+         sh 'echo ${nginx_IP}'
+         sh 'echo ${worker_IP}' 
+         sh 'echo $(manager_IP}' 
+        
       }
 }
    
