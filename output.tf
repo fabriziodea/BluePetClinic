@@ -13,9 +13,9 @@ output "manager_Public_IP" {
 
 resource "local_file" "tf_ansible_vars_file_new" {
     content = <<-DOC
-    NGINX_IP = ${nginx_Public_IP}
-    Worker_IP = ${worker_Public_IP}
-    Manager_IP = ${manager_Public_IP}
+    NGINX_IP = aws_instance.nginx-VM.public_ip
+    Worker_IP = aws_instance.worker-VM.public_ip
+    Manager_IP = aws_instance.manager-VM.public_ip
     DOC
   filename = "./tf_ansible_vars_file.yml"
 }
