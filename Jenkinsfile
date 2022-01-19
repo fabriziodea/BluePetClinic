@@ -32,8 +32,8 @@ pipeline {
       {sh 'echo ${worker_IP}' }
       {sh 'export manager_IP=${terraform output -raw manager_Public_IP}' } 
       {sh 'echo ${manager_IP}' 
-  } 
+      } 
+   }
  }
-}
-   
+}   
       
