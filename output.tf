@@ -25,7 +25,7 @@ resource "local_file" "tf_ansible_vars_file_new" {
             hosts:
                 ${aws_instance.nginx-VM.public_ip}
                 
-    vars:
+      vars:
         ansible_user: ubuntu
         ansible_ssh_private_key_file: '~/.ssh/MyKeyPai.pem'
         ansible_python_interpreter: "/usr/bin/python3"
