@@ -54,9 +54,9 @@ For this project, we should have:
 Applications are first tested in a virual machine to see if they are working. Ansible files are made that involves Inventory, playbook.yaml and roles/tasks. 
 
 We need 3 new Virtual Machines in AWS and these are:
-- ()
-- manager
-- worker
+- nginx
+- swarmanager
+- swarmworker
 
 
 ---
