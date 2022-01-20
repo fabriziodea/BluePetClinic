@@ -14,16 +14,16 @@ output "manager_Public_IP" {
 resource "local_file" "tf_ansible_vars_file_new" {
     content = <<-DOC
     all:
-      children:
-        swarmanger:
-            hosts:
-                ${aws_instance.manager-VM.public_ip}
-        swarmworker:
-            hosts:
-                ${aws_instance.worker-VM.public_ip}
-        nginx:
-            hosts:
-                ${aws_instance.nginx-VM.public_ip}
+        children:
+            swarmanager:
+                hosts:
+                    ${aws_instance.manager-VM.public_ip}
+            swarmworker:
+                hosts:
+                    ${aws_instance.worker-VM.public_ip}
+            nginx:
+                hosts:
+                    ${aws_instance.nginx-VM.public_ip}
                 
       vars:
         ansible_user: ubuntu
