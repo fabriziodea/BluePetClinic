@@ -1,11 +1,7 @@
-  
-- name: Load Variables
-  include_vars: 
-    file: inventory.yml
 
 - name: Join Swarm-Worker
   docker_swarm:
     state: join
     advertise_addr: swarmworker
-    join_token: "{{ hostvars['ip']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+    join_token: swarm_info.swarm_facts.JoinTokens.Worker
     remote_addrs: [ swarmanager]
