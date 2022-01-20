@@ -15,10 +15,10 @@ resource "local_file" "tf_ansible_vars_file_new" {
     content = <<-DOC
     all:
       children:
-        managers:
+        swarmanger:
             hosts:
                 ${aws_instance.manager-VM.public_ip}
-        workers:
+        swarmworker:
             hosts:
                 ${aws_instance.worker-VM.public_ip}
         nginx:
