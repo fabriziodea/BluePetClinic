@@ -1,0 +1,8 @@
+- name: copying file with playbook 
+  copy:
+    src: ~/bluescript.sh
+    dest: /home
+
+
+- name: Run our script
+  ansible.builtin.shell:  /home/bluescript.sh
