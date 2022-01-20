@@ -1,8 +1,9 @@
 - name: copying file with playbook 
   copy:
     src: ~/bluescript.sh
-    dest: /home
+    dest: /home/bluescript.sh
     mode: "777"
+    owner: ubuntu
 
 
 - name: Run our script
