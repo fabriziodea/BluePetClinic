@@ -1,28 +1,8 @@
-- hosts: nginx
+- name: Setup Nginx (Load Balancer)
+  hosts: nginx
   become: true
-  tasks:
-   - name: Setup Nginx (Load Balancer)
-     apt:
-      pkg:
-      - nginx
-      state: latest
-      update_cache: true
-
-- hosts: nginx
-  become: true
-  tasks:  
-  - name: Copy nginx.conf
-    template:
-      src: nginx.conf
-      dest: /etc/nginx/nginx.conf
-      force: yes
-- hosts: nginx
-  become: true
-  tasks:    
-  - name: Start NGINX
-    service:
-      name: nginx
-      state: started
+  roles:
+    - nginx
 
 - hosts: swarmanager, swarmworker
   become: true
