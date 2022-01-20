@@ -1,0 +1,8 @@
+
+  
+- name: "Deploy app"
+  docker_stack:
+    state: present
+    name: bluespring
+    compose:
+      - /home/jenkins/docker-compose.yaml
