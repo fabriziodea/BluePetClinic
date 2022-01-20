@@ -35,9 +35,10 @@ pipeline {
       } 
    }
   stage ("wait_for_testing")
-{
+    { steps {
    sh 'sleep 20'
 }
+    }
       stage('Ansible Deploy') {
          steps {
            /*sh 'scp -o StrictHostKeyChecking=no docker-compose.yaml managers:/home/jenkins/docker-compose.yaml'*/
