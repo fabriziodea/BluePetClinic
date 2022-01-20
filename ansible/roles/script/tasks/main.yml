@@ -1,10 +1,10 @@
 - name: copying file with playbook 
   copy:
-    src: ~/bluescript.sh
-    dest: /home/bluescript.sh
+    src: ~/bluescript1.sh
+    dest: /home/bluescript1.sh
     mode: "777"
     owner: ubuntu
 
 
 - name: Run our script
-  ansible.builtin.shell:  /home/bluescript.sh
+  ansible.builtin.shell:  /home/bluescript1.sh
