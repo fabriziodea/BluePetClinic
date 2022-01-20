@@ -12,7 +12,6 @@
   become: true
   tasks:  
   - name: Copy nginx.conf
-    hosts: nginx
     template:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
