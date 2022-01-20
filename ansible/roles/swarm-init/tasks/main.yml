@@ -8,3 +8,8 @@
   - name: Get the manager node join-token
     docker_swarm_info:
     register: swarm_info
+   
+  - name: Advertise address
+    docker_swarm:
+    state: present
+    advertise_addr: manager
