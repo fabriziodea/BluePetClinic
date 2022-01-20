@@ -1,3 +1,7 @@
+  
+  - name: Load Variables
+    include_vars: inventory.yml
+
 - name: Join Swarm-Worker
   docker_swarm:
     state: join
