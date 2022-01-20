@@ -18,5 +18,5 @@ resource "local_file" "tf_ansible_vars_file_new" {
         Worker_IP: ${aws_instance.worker-VM.public_ip}
         Manager_IP: ${aws_instance.manager-VM.public_ip}
     DOC
-  filename = "ansible./tf_ansible_vars_file.yml"
+  filename = "ansible/tf_ansible_vars_file.yml"
 }
