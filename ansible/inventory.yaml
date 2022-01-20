@@ -5,7 +5,7 @@ all:
         "{{ Manager_IP }}"
     workers:
       hosts:
-        "{{ Worker_IP}}"
+        "{{ Worker_IP }}"
     nginx:
       hosts:
         "{{ NGINX_IP }}"
