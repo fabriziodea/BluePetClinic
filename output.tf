@@ -17,13 +17,13 @@ resource "local_file" "tf_ansible_vars_file_new" {
       children:
         swarmanger:
             hosts:
-                ${aws_instance.manager-VM.public_ip}
+                ${aws_instance.manager-VM.public_ip}:
         swarmworker:
             hosts:
-                ${aws_instance.worker-VM.public_ip}
+                ${aws_instance.worker-VM.public_ip}:
         nginx:
             hosts:
-                ${aws_instance.nginx-VM.public_ip}
+                ${aws_instance.nginx-VM.public_ip}:
                 
       vars:
         ansible_user: ubuntu
