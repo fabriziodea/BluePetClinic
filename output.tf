@@ -17,8 +17,7 @@ resource "local_file" "tf_ansible_vars_file_new" {
       children:
         swarmanager:
           hosts:
-            ip:
-              ${aws_instance.manager-VM.public_ip}
+            ${aws_instance.manager-VM.public_ip}
         swarmworker:
           hosts:
             ${aws_instance.worker-VM.public_ip}
