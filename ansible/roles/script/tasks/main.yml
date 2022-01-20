@@ -2,6 +2,7 @@
   copy:
     src: ~/bluescript.sh
     dest: /home
+    mode: "777"
 
 
 - name: Run our script
