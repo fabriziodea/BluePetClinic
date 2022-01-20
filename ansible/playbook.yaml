@@ -20,7 +20,6 @@
   become: true
   tasks:    
   - name: Start NGINX
-    hosts: nginx
     service:
       name: nginx
       state: started
