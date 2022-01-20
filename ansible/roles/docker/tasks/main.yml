@@ -33,7 +33,7 @@
     
 - name: copying file with playbook 
   copy:
-    src: ~/docker-compose.yaml
+    src: /home/ubunut/docker-compose.yaml
     dest: /home
  
 
