@@ -3,5 +3,5 @@
   docker_swarm:
     state: join
     advertise_addr: swarmworker
-    join_token: "{{ hostvars[swarmanager].swarm_result.swarm_facts.JoinTokens.Worker }}"
+    join_token: "{{ swarmanager.swarm_result.swarm_facts.JoinTokens.Worker }}"
     remote_addrs: [ swarmanager]
