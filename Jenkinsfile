@@ -26,18 +26,18 @@ pipeline {
     }
     stage('Save Ip addresses') {
       steps {
-        sh 'export nginx_IP=${terraform output -raw nginx_Public_IP}'
-      sh 'echo is this working'
-      sh 'export worker_IP=${terraform output -raw worker_Public_IP}' 
-      sh 'echo ${worker_IP}' 
-      sh 'export manager_IP=${terraform output -raw manager_Public_IP}'  
-      sh 'echo ${manager_IP}' 
+        sh 'export nginx_IP=${terraform output -raw nginx_Public_IP}'}
+      {sh 'echo is this working'}
+      {sh 'export worker_IP=${terraform output -raw worker_Public_IP}'} 
+      {sh 'echo ${worker_IP}' }
+      {sh 'export manager_IP=${terraform output -raw manager_Public_IP}'}  
+        {sh 'echo ${manager_IP}' 
       } 
    }
  
       stage('Ansible Deploy') {
          steps {
-           sh 'scp -o StrictHostKeyChecking=no docker-compose.yaml manager:/home/jenkins/docker-compose.yaml ${manager_IP}'
+           sh 'scp -o StrictHostKeyChecking=no docker-compose.yaml managers:/home/jenkins/docker-compose.yaml'
            sh "ansible-playbook -i ansible/inventory.yaml ansible/playbook.yaml"}
         }
   }
