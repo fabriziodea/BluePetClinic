@@ -1,24 +1,32 @@
-- name : Setup Nginx (Load Balancer)
+- name: Setup Nginx (Load Balancer)
   hosts: nginx
   become: true
   roles:
     - nginx
 
+- name: Install dependencies
+  hosts: swarmanager, swarmworker
+  become: true
+  roles:
+    - git
+    - docker
+    - nodejs
+    - script
+
 - name:  init swarm manager
-  hosts: managers
-  gather_facts: yes
+  hosts: swarmanager
   become: true
   roles: 
-   - docker
-   - nodejs
    - swarm-init
 
 - name: workers joins
-  hosts: workers
+  hosts: swarmworker
   become: true
-  gather_facts: yes
   roles: 
-   - docker
-   - nodejs
    - swarm-worker
 
+- name: manager deploys
+  hosts: swarmanager
+  become: true
+  roles:
+  - deploy
