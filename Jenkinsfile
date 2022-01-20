@@ -37,7 +37,7 @@ pipeline {
  
       stage('Ansible Deploy') {
          steps {
-           sh 'scp -o StrictHostKeyChecking=no docker-compose.yaml managers:/home/jenkins/docker-compose.yaml'
+           /*sh 'scp -o StrictHostKeyChecking=no docker-compose.yaml managers:/home/jenkins/docker-compose.yaml'*/
            sh "ansible-playbook -i ansible/inventory.yaml ansible/playbook.yaml"}
         }
   }
