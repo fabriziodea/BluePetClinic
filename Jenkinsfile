@@ -36,7 +36,7 @@ pipeline {
    }
   stage ("wait_for_testing")
     { steps {
-   sh 'sleep 20'
+   sh 'sleep 30'
 }
     }
       stage('Ansible Deploy') {
