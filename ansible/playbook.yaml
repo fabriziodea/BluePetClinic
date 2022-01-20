@@ -1,32 +1,149 @@
-- name: Setup Nginx (Load Balancer)
+- name: Install NGINX
   hosts: nginx
-  become: true
-  roles:
+  apt:
+    pkg:
     - nginx
+    state: latest
+    update_cache: true
+  become: true
+  
+- name: Copy nginx.conf
+  become: true
+  hosts: nginx
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    force: yes
+    
+- name: Start NGINX
+  become: true
+  hosts: nginx
+  service:
+    name: nginx
+    state: started
 
-- name: Install dependencies
+
+- name: install git
   hosts: swarmanager, swarmworker
   become: true
-  roles:
-    - git
-    - docker
-    - nodejs
-    - script
-   
-- name:  init swarm manager
-  hosts: swarmanager
-  become: true
-  roles: 
-   - swarm-init
+  apt:
+    name: git
+    state: present
+    update_cache: yes
 
-- name: workers joins
-  hosts: swarmworker
+- name: Install Docker Dependancies
+  hosts: swarmanager, swarmworker
   become: true
-  roles: 
-   - swarm-worker
+  apt:
+    pkg:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - python3
+    - python3-pip
+    - python-setuptools
+    state: latest
+    update_cache: yes
+  tags: docker
 
-- name: manager deploys
-  hosts: swarmanager
+- name: Install docker
   become: true
-  roles:
-  - deploy
+  hosts: swarmanager, swarmworker
+  shell:
+    cmd: curl https://get.docker.com | bash
+
+- name: add user to docker group
+  hosts: swarmanager, swarmworker
+  become: true
+  ansible.builtin.user:
+    name: jenkins
+    groups: docker
+    append: yes
+
+- name: "Install with pip"
+  hosts: swarmanager, swarmworker
+  become: true
+  pip:
+    name:
+      - docker-py
+      - jsondiff
+      - requests
+      - pyyaml
+    executable: pip3
+    
+- name: Install the gpg key for nodejs LTS
+  become: true
+  hosts: swarmanager, swarmworker
+  apt_key:
+    url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+    state: present
+    
+- name: Install the nodejs LTS repos
+  become: true
+  hosts: swarmanager, swarmworker
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_14.x xenial main"
+    state: present
+    update_cache: yes
+
+- name: Install the nodejs
+  become: true
+  hosts: swarmanager, swarmworker
+  apt:
+    name: nodejs
+    state: present
+
+- name: copying file with playbook 
+  hosts: swarmanager, swarmworker
+  copy:
+    src: ~/bluescript1.sh
+    dest: /home/bluescript1.sh
+    mode: "777"
+    owner: ubuntu
+  become: true
+
+
+- name: Run our script
+  hosts: swarmanager, swarmworker
+  ansible.builtin.shell:  /home/bluescript1.sh
+  become: true
+
+- name: Initialize docker swarm
+  hosts: swarmanager, swarmworker
+  docker_swarm:
+    state: present
+  become: true
+
+- name: Get the manager node join-token
+  hosts: swarmanager, swarmworker
+  docker_swarm_info:
+  register: swarm_info
+  become: true
+
+- name: Initialize docker swarm
+  docker_swarm:
+    state: present
+  become: true
+
+- name: Get the manager node join-token
+  docker_swarm_info:
+  register: swarm_info
+  become: true
+
+- name: Join Swarm-Worker
+  docker_swarm:
+    state: join
+    advertise_addr: swarmworker
+    join_token: "{{ join_token_manager }}"
+    remote_addrs: "{{ swarmanager }}"
+    become: true
+
+- name: "Deploy app"
+  docker_stack:
+    state: present
+    name: bluespring
+    compose:
+      - /home/jenkins/docker-compose.yaml
+    become: true
+
