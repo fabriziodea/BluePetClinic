@@ -31,8 +31,7 @@
       - pyyaml
     executable: pip3
     
-
- - name: copying file with playbook 
+- name: copying file with playbook 
       copy:
         src: ~/docker-compose.yaml
         dest: /home
