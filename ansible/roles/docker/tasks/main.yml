@@ -30,3 +30,13 @@
       - requests
       - pyyaml
     executable: pip3
+    
+
+ - name: copying file with playbook 
+      copy:
+        src: ~/Downloads/index.html
+        dest: /var/www/html
+        owner: apache
+        group: apache        
+        mode: 0644
+    
