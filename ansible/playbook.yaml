@@ -5,16 +5,7 @@
     - nginx
 
 - name: Install dependencies
-  hosts: swarmanager
-  become: true
-  roles:
-    - git
-    - docker
-    - nodejs
-    - script
-
-- name: Install dependencies
-  hosts: swarmworker
+  hosts: swarmanager, swarmworker
   become: true
   roles:
     - git
