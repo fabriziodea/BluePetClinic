@@ -2,13 +2,13 @@ all:
   children:
     managers:
       hosts:
-        ec2-54-246-253-6.eu-west-1.compute.amazonaws.com:
+        {{ Manager_IP: }}
     workers:
       hosts:
-        ec2-54-155-194-239.eu-west-1.compute.amazonaws.com:
+        {{ Worker_IP: }}
     nginx:
       hosts:
-        ec2-34-245-170-57.eu-west-1.compute.amazonaws.com:
+        {{ NGINX_IP: }}
 
   vars:
     ansible_user: ubuntu
