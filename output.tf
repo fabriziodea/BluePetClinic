@@ -17,13 +17,13 @@ resource "local_file" "tf_ansible_vars_file_new" {
       children:
         managers:
             hosts:
-                "{{ Manager_IP }}"
+                ${aws_instance.manager-VM.public_ip}
         workers:
             hosts:
-                "{{ Worker_IP }}"
+                ${aws_instance.worker-VM.public_ip}
         nginx:
             hosts:
-                "{{ NGINX_IP }}"
+                ${aws_instance.nginx-VM.public_ip}
                 
     vars:
         ansible_user: ubuntu
