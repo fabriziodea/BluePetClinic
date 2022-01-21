@@ -126,7 +126,7 @@
     docker_swarm:
       state: join
       advertise_addr: swarmworker
-      join_token: {{ join_token_worker }}
+      join_token: "{{ join_token_worker }}"
       remote_addrs: [ 'swarmanager:2377']
 
 - hosts: swarmanager
