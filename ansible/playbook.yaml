@@ -123,8 +123,8 @@
     docker_swarm:
       state: join
       advertise_addr: swarmworker
-      join_token: "{{ hostvars['swarmanager']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
-      remote_addrs: [ swarmanager]
+      join_token: "{{ swarmanager.swarm_info.swarm_facts.JoinTokens.Worker }}"
+      remote_addrs: [ 'swarmanager:2377']
 
 - hosts: swarmanager
   become: true
