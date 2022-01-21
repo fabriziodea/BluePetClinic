@@ -113,6 +113,7 @@
   - name: Get the manager node join-token
     docker_swarm_info:
     register: swarm_info
+  - name: set facts and send to worker
     set_fact: 
       join_token_worker: swarm_.info.swarm_facts.JoinTokens.Worker
     delegate_to: swarmworker
